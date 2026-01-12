@@ -17,7 +17,7 @@ Cadwork guide : https://docs.cadwork.com/projects/cwapi3dpython/en/latest/get_st
 
 ## Usage 
 
-Click on the plugin to refresh all loaded python modules. 
+After you've made changes in your own python plugin and before running them, run the ReloadPythonModules instead of restarting cadwork
 
 1. Make sure you add the current directory to the system path at the top of your entry point (main python file):
     ```python
@@ -35,4 +35,5 @@ Click on the plugin to refresh all loaded python modules.
 ## License
 
 MIT License — see [LICENSE](LICENSE) for details.
+
 
