@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PluginInfo>
+    <Version>1.0.0.2</Version>
+    <Date>2026-01-07</Date>
+    <Author>Sylvain Usai</Author>
+    <Name>
+        <Text language="German">Python-Module aktualisieren</Text>
+        <Text language="English">Reload Python Modules</Text>
+        <Text language="French">Actualiser les modules Python</Text>
+        <Text language="Italian">Aggiorna moduli Python</Text>
+        <Text language="Spanish">Actualizar módulos de Python</Text>
+        <Text language="Czech"/>
+        <Text language="Finnish"/>
+        <Text language="Russian"/>
+        <Text language="Polish"/>
+        <Text language="Romanian"/>
+        <Text language="Norwegian"/>
+        <Text language="Chinese"/>
+        <Text language="Portuguese"/>
+        <Text language="Estonian"/>
+        <Text language="Japanese"/>
+    </Name>
+    <Description>
+        <Text language="German">
+            <![CDATA[
+Alle importierten Python-Module aus dem API.x64-Ordner aktualisiert und es Entwicklern ermöglicht, Codeänderungen zu testen, ohne cadwork neu starten zu müssen.
+<hr><p style="font-size:12px;"><span style="color:#dc4b3a;">erstellt von D2P - desigtoproduction</span></p>
+]]>
+        </Text>
+        <Text language="English">
+            <![CDATA[
+Refreshes all imported Python modules from the API.x64 folder, allowing developers to test code changes without restarting cadwork.
+<hr><p style="font-size:12px;"><span style="color:#dc4b3a;">made by D2P - desigtoproduction</span></p>
+]]>
+        </Text>
+        <Text language="French">
+            <![CDATA[
+Actualise tous les modules Python importés du dossier API.x64, permettant aux développeurs de tester leur code sans redémarrer cadwork.
+<hr><p style="font-size:12px;"><span style="color:#dc4b3a;">créé par D2P - desigtoproduction</span></p>
+]]>
+        </Text>
+        <Text language="Italian"/>
+        <Text language="Spanish"/>
+        <Text language="Czech"/>
+        <Text language="Finnish"/>
+        <Text language="Russian"/>
+        <Text language="Polish"/>
+        <Text language="Romanian"/>
+        <Text language="Norwegian"/>
+        <Text language="Chinese"/>
+        <Text language="Portuguese"/>
+        <Text language="Estonian"/>
+        <Text language="Japanese"/>
+    </Description>
+</PluginInfo>
