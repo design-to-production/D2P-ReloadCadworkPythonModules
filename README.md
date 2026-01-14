@@ -11,7 +11,7 @@ Developed and tested with cadwork 3d version 2025, build 390.
 
 ## Installation
 
-Download the repository and drop the plugin folder in your cadwork APIx64 folder or create a symlink to the APIx64 folder.
+Download the repository and drop the plugin folder `ReloadPythonModules` in your cadwork APIx64 folder or create a symlink to the APIx64 folder.
 
 Cadwork guide : https://docs.cadwork.com/projects/cwapi3dpython/en/latest/get_started/ (note, the path for version 2025 is now `...\cadwork\userprofil_2025\3d\API.x64`)
 
@@ -35,5 +35,6 @@ After you've made changes in your own python plugin and before running them, run
 ## License
 
 MIT License — see [LICENSE](LICENSE) for details.
+
 
 
