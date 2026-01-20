@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PluginInfo>
+    <Version>1.0.2.0</Version>
+    <Date>2026-01-20</Date>
+    <Author>Sylvain Usai</Author>
+    <Name>
+        <Text language="German">Hot Reload</Text>
+        <Text language="English">Hot Reload</Text>
+        <Text language="French">Hot Reload</Text>
+        <Text language="Italian">Hot Reload</Text>
+        <Text language="Spanish">Hot Reload</Text>
+        <Text language="Czech"/>
+        <Text language="Finnish"/>
+        <Text language="Russian"/>
+        <Text language="Polish"/>
+        <Text language="Romanian"/>
+        <Text language="Norwegian"/>
+        <Text language="Chinese"/>
+        <Text language="Portuguese"/>
+        <Text language="Estonian"/>
+        <Text language="Japanese"/>
+    </Name>
+    <Description>
+        <Text language="German">
+            <![CDATA[
+Alle importierten Python-Module aus dem API.x64-Ordner aktualisiert und es Entwicklern ermöglicht, Codeänderungen zu testen, ohne cadwork neu starten zu müssen.
+<hr><p style="font-size:14px;"><span style="color:#dc4b3a;">v1.0.2. erstellt von D2P - Design-to-Production</span></p>
+]]>
+        </Text>
+        <Text language="English">
+            <![CDATA[
+Refreshes all imported Python modules from the API.x64 folder, allowing developers to test code changes without restarting cadwork.
+<hr><p style="font-size:14px;"><span style="color:#dc4b3a;">v1.0.2. made by D2P - Design-to-Production</span></p>
+]]>
+        </Text>
+        <Text language="French">
+            <![CDATA[
+Actualise tous les modules Python importés du dossier API.x64, permettant aux développeurs de tester leur code sans redémarrer cadwork.
+<hr><p style="font-size:14px;"><span style="color:#dc4b3a;">v1.0.2. créé par D2P - Design-to-Production</span></p>
+]]>
+        </Text>
+        <Text language="Italian">
+            <![CDATA[
+Aggiorna tutti i moduli Python importati dal dossier API.x64, permettendo ai programmatori di testare il loro codice senza riavviare cadwork.
+<hr><p style="font-size:14px;"><span style="color:#dc4b3a;">v1.0.2. creato da D2P - Design-to-Production</span></p>
+]]>
+        </Text>
+        <Text language="Spanish">
+            <![CDATA[
+Actualiza todos los módulos Python importados del directorio API.x64, permitiendo a los programadores probar su código sin reiniciar cadwork.
+<hr><p style="font-size:14px;"><span style="color:#dc4b3a;">v1.0.2. creado por D2P - Design-to-Production</span></p>
+]]>
+        </Text>
+        <Text language="Czech"> 
+        <Text language="Finnish"/>
+        <Text language="Russian"/>
+        <Text language="Polish"/>
+        <Text language="Romanian"/>
+        <Text language="Norwegian"/>
+        <Text language="Chinese"/>
+        <Text language="Portuguese"/>
+        <Text language="Estonian"/>
+        <Text language="Japanese"/>
+    </Description>
+</PluginInfo>

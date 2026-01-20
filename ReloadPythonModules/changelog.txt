@@ -1,5 +1,0 @@
-v1.0.1 (07.01.2026)
-- Support modules in symlinks
-
-v1.0.0 (21.11.2025)
-- Initial release.

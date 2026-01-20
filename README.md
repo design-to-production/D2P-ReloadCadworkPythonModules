@@ -1,8 +1,8 @@
-# ReloadCadworkPythonModules
+# Hot Reload
 
 ![Logo](Media/Images/Logo1024x256.svg)
 
-During cadwork plugin development, changes to imported Python modules only take effect after restarting cadwork. This plugin lets you reload all modules instantly—no restart needed.
+During cadwork plugin development, changes to imported Python modules only take effect after restarting cadwork. `Hot Reload` let you refresh all modules instantly—no restart needed.
 
 Developed by Design-to-Production : https://www.designtoproduction.com/en/
 
@@ -11,13 +11,13 @@ Developed and tested with cadwork 3d version 2025, build 390.
 
 ## Installation
 
-Download the repository and drop the plugin folder `ReloadPythonModules` in your cadwork APIx64 folder or create a symlink to the APIx64 folder.
+Download the repository and drop the plugin folder `HotReload` in your cadwork APIx64 folder or create a symlink to the APIx64 folder.
 
 Cadwork guide : https://docs.cadwork.com/projects/cwapi3dpython/en/latest/get_started/ (note, the path for version 2025 is now `...\cadwork\userprofil_2025\3d\API.x64`)
 
 ## Usage 
 
-After you've made changes in your own python plugin and before running them, run the ReloadPythonModules instead of restarting cadwork
+After you've made changes in your own python plugin and before running them, run `Hot Reload` instead of restarting cadwork
 
 1. Make sure you add the current directory to the system path at the top of your entry point (main python file):
     ```python
