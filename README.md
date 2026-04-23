@@ -2,7 +2,7 @@
 
 ![Logo](Media/Images/Logo1024x256.svg)
 
-During cadwork plugin development, changes to imported Python modules only take effect after restarting cadwork. `Hot Reload` let you refresh all modules instantly—no restart needed.
+During cadwork plugin development, changes to imported Python modules only take effect after restarting cadwork. `Hot Reload` let you refresh all modules instantly, no restart needed.
 
 Developed by Design-to-Production : https://www.designtoproduction.com/en/
 
