@@ -24,7 +24,8 @@ After you've made changes in your own python plugin and before running them, run
     import sys, os
     sys.path.insert(0, os.path.dirname(__file__))
     ```
-1. subfolder modules are supported
+1. subfolder modules are supported.
+2. submodules outside APIx64 are supported (since 1ac2b14be360e45935e59092277c72e1758e7b5d).
 1. Symlinked modules are supported.
 
 ## Limitations 
