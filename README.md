@@ -30,8 +30,9 @@ After you've made changes in your own python plugin and before running them, run
 
 ## Limitations 
 
-- The modules are re-imported in order of appearance in the system path which might fail if you have circular import.
-- If different projects are loading modules with the same name, the last loaded module will be used by all projects.
+- Hot Reload unloads selected modules from `sys.modules`; updated code is imported on the next plugin run.
+- If different projects load modules with the same name, one import path can still shadow another.
+- In some host-runtime edge cases, long-lived references to old objects may remain; a full cadwork restart is then required.
 
 ## License
 
