@@ -1,6 +1,5 @@
 # reload_all/reload_all.py
 import sys
-import importlib
 from pathlib import Path
 from typing import Optional
 
@@ -66,14 +65,17 @@ def _reload_candidate(module, module_path: Optional[Path], api_base: Path) -> bo
 
 def ReloadAllModules():
     """
-    Reload loaded plugin/project modules: under API.x64, or on disk outside
-    the embedded Python tree (sys.base_prefix) so sibling repos (e.g.
-    cadwork_oo from Git) reload together with code under Public/API.x64.
+    Hard-unload plugin/project modules from ``sys.modules`` so the next plugin
+    execution imports fresh module/class objects instead of mixing old/new
+    identities after ``importlib.reload``.
+
+    Targets modules under API.x64 and any on-disk project modules outside the
+    embedded Python runtime tree (``sys.base_prefix``).
     """
     api_base = Path(__file__).parent.parent
     print(f"HotReload - Reloading modules from: {api_base}")
 
-    modules_to_reload = []
+    module_names_by_path = {}
     for module_name, module in list(sys.modules.items()):
         if module is None or module_name == "__main__":
             continue
@@ -81,26 +83,45 @@ def ReloadAllModules():
             module_path = _module_fs_path(module)
             if not _reload_candidate(module, module_path, api_base):
                 continue
-            modules_to_reload.append((module_name, module))
+
+            try:
+                resolved_module_path = str(module_path.resolve())
+            except OSError:
+                resolved_module_path = str(module_path)
+            module_names_by_path.setdefault(resolved_module_path, []).append(module_name)
         except (AttributeError, TypeError, ValueError):
             continue
 
-    modules_to_reload.sort(key=lambda item: (-item[0].count("."), item[0]))
+    modules_to_unload = set()
+    for module_path, module_names in module_names_by_path.items():
+        modules_to_unload.update(module_names)
+        if len(module_names) > 1:
+            sorted_names = ", ".join(sorted(module_names))
+            print(
+                "HotReload - Warning: multiple module names resolve to the same file "
+                f"({module_path}). All aliases will be unloaded: {sorted_names}"
+            )
 
-    reloaded_count = 0
+    modules_to_unload = sorted(modules_to_unload, key=lambda name: (-name.count("."), name))
+
+    unloaded_count = 0
     failed_count = 0
-    for module_name, module in modules_to_reload:
+    for module_name in modules_to_unload:
         try:
-            importlib.reload(module)
-            print(f"HotReload - Reloaded: {module_name}")
-            reloaded_count += 1
+            del sys.modules[module_name]
+            print(f"HotReload - Unloaded: {module_name}")
+            unloaded_count += 1
         except Exception as e:
-            print(f"HotReload - Failed to reload {module_name}: {e}")
+            print(f"HotReload - Failed to unload {module_name}: {e}")
             failed_count += 1
 
-    print(f"\nHotReload - Reload complete: {reloaded_count} successful, {failed_count} failed")
+    print(
+        "\nHotReload - Unload complete: "
+        f"{unloaded_count} successful, {failed_count} failed"
+    )
+    print("HotReload - Run your plugin again to import fresh module objects.")
 
 
 if __name__ == "__main__":
     ReloadAllModules()
-
+
