@@ -1,0 +1,2 @@
+# Keep this plugin's stdlib helpers loaded across Hot Reload runs (see README).
+mod:hotreload_utils*

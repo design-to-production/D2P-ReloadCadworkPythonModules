@@ -1,7 +1,20 @@
 # reload_all/reload_all.py
+from __future__ import annotations
+
 import sys
 from pathlib import Path
 from typing import Optional
+
+_plugin_root = str(Path(__file__).resolve().parent)
+if _plugin_root not in sys.path:
+    sys.path.insert(0, _plugin_root)
+
+from hotreload_utils.hotreloadignore import (
+    load_ignore_rules,
+    module_name_matches_ignore_rules,
+    path_matches_ignore_rules,
+)
+from hotreload_utils.paths import is_subpath
 
 
 def _module_fs_path(module) -> Optional[Path]:
@@ -13,21 +26,6 @@ def _module_fs_path(module) -> Optional[Path]:
     if spec is None or not spec.origin or spec.origin == "namespace":
         return None
     return Path(spec.origin)
-
-
-def is_subpath(child: Path, parent: Path) -> bool:
-    """True if child is under parent (logical path or resolved)."""
-    try:
-        child.relative_to(parent)
-        return True
-    except ValueError:
-        pass
-    try:
-        child.resolve().relative_to(parent.resolve())
-        return True
-    except ValueError:
-        pass
-    return False
 
 
 def _embedded_runtime_root() -> Path:
@@ -75,6 +73,17 @@ def ReloadAllModules():
     api_base = Path(__file__).parent.parent
     print(f"HotReload - Reloading modules from: {api_base}")
 
+    ignore_rules = load_ignore_rules(api_base)
+    if ignore_rules.path_specs or ignore_rules.module_patterns:
+        parts = []
+        if ignore_rules.path_specs:
+            parts.append(f"{len(ignore_rules.path_specs)} path rule set(s)")
+        if ignore_rules.module_patterns:
+            parts.append(f"{len(ignore_rules.module_patterns)} module glob(s)")
+        print(
+            "HotReload - Active `.hotreloadignore`: " + ", ".join(parts)
+        )
+
     module_names_by_path = {}
     for module_name, module in list(sys.modules.items()):
         if module is None or module_name == "__main__":
@@ -84,11 +93,17 @@ def ReloadAllModules():
             if not _reload_candidate(module, module_path, api_base):
                 continue
 
+            if module_name_matches_ignore_rules(module_name, ignore_rules):
+                continue
+
             try:
-                resolved_module_path = str(module_path.resolve())
+                resolved_module_path = module_path.resolve()
             except OSError:
-                resolved_module_path = str(module_path)
-            module_names_by_path.setdefault(resolved_module_path, []).append(module_name)
+                resolved_module_path = module_path
+            if path_matches_ignore_rules(resolved_module_path, ignore_rules):
+                continue
+            resolved_module_path_str = str(resolved_module_path)
+            module_names_by_path.setdefault(resolved_module_path_str, []).append(module_name)
         except (AttributeError, TypeError, ValueError):
             continue
 
@@ -124,4 +139,3 @@ def ReloadAllModules():
 
 if __name__ == "__main__":
     ReloadAllModules()
-

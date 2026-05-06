@@ -1,3 +1,18 @@
+v1.0.7 (06.05.2026)
+- Ship ``HotReload/.hotreloadignore`` (skip unloading ``hotreload_utils``)
+
+v1.0.6 (06.05.2026)
+- Rename package ``util`` → ``hotreload_utils`` (fewer ``sys.path`` collisions)
+
+v1.0.5 (06.05.2026)
+- `.hotreloadignore`: `mod:` lines for dotted module globs (e.g. `numpy*`, `pyclipr*`)
+
+v1.0.4 (06.05.2026)
+- `.hotreloadignore`: built-in pattern matcher (stdlib only; no `pathspec`)
+
+v1.0.3 (06.05.2026)
+- Optional per-plugin `.hotreloadignore` (gitignore-style exclusions; requires `pathspec`)
+
 v1.0.2 (20.01.2026)
 - Official release
 
